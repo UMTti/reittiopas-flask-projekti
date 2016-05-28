@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+ <title>Stop2.0</title>
+ <meta name="author" content="Henna Kalliokoski">
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <!--<link rel="stylesheet" type="text/css" href="/pages/stule.css"> -->
+ <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+ <script>
+    window.onload = function() {
+    	alert("Juuhh")
+	navigator.geolocation.getCurrentPosition(function(location) {
+		alert("terce")
+		alert(location.coords);
+  		console.log(location.coords.latitude);
+  		console.log(location.coords.longitude);
+  		console.log(location.coords.accuracy);
+	});
+	};
+
+ </script>
+</head>
+<body>
+
+
+<div style="text-align:center;background-color:#00B9E4;padding:10px;color:white;border-bottom: 10px solid #64BE14;border-radius:20px;">
+<h1>Stop2.0 <span class="label label-success">siirry <a href="https://beta.reittiopas.fi/" style="color:white;">reittioppaaseen</a></span></h1>
+</div>
+
+{% if content %}
+  <h1>Hello {{ content }}!</h1>
+{% else %}
+  <h1>Hello World!</h1>
+{% endif %}
+
+
+<div id="demo"> </div>
+
+
+<!--<form method="post" action="/search">
+	<p>
+	<label for="haku"> Haku </label>
+		<input type="text" name="haku" id="haku"> 
+	<input type=submit value="Hae">
+</form> -->
+
+
+</div>
+
+</body>
+</html>
