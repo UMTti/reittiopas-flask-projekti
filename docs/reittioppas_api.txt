@@ -1,5 +1,10 @@
 Selaimessa toimiva konsoli GraphQL-kyselyjen testaamiseen: http://dev.hsl.fi/graphql/console/
 
+API-kutsut osoitteeseen: https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql
+POST-pyyntö, headeriin 'Content-Type':'application/graphql'
+POST-pyynnön dataan esimerkkejä alla.
+
+
 Pysäkiltä päivän aikana lähtevät bussit:
 id:n kohdalle pysäkin gtfsid
 date: yyyymmdd
@@ -26,7 +31,7 @@ date: yyyymmdd
 
 
 Yhden reitin pysäkit:
-id = "<reitin gtfsId:{0,1}:01"
+id = "<reitin gtfsId:{0,1}:01>"
 
 {
   pattern(id:"HSL:4718:1:01") {
