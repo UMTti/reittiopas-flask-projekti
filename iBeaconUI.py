@@ -7,6 +7,7 @@ import requests
 import logging
 from logging.handlers import RotatingFileHandler
 import json
+from datetime import datetime
 
 import bluetooth._bluetooth as bluez
 
@@ -33,15 +34,16 @@ def default_page():
     setti = set()
     for beacon in returnedList:
         if '2f234454cf6d4a0fadf2f4911ba9ffa6' in beacon:
-        	#2f234454cf6d4a0fadf2f4911ba9ffa6
             app.logger.info("beacon loydetty")
             r = requests.get("http://stop2.herokuapp.com/stop/2f234454-cf6d-4a0f-adf2-f4911ba9ffa6")
             content = r.content
             content = json.loads(content)
             palautus = "<h3>Press button to stop bus:</h3> "
             for asd in content:
-            	setti.add(asd['line'])
-                palautus += " <div class='btn btn-primary stop_bus' style='margin:5px;'>" +  asd['line'] + "</div>  "
+                setti.add(asd['line'])
+                arrival = datetime.fromtimestamp(int(asd[arrival])).strftime('%H:%M')
+                palautus += " <div class='btn btn-primary stop_bus' style='margin:5px;'>" +  asd['line'] + " " + asd[arrival] \
+                            + "</div>  "
             content = palautus
             break
         else:
