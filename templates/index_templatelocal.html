@@ -12,7 +12,7 @@
 	$( document ).ready(function() {
     	$( ".stop_bus" ).click(function(event) {
 
-    		$( "#stopped_bus" ).html("<div class='btn btn-lg' style='background:#00B9E4'><h3> You stopped bus " + $(this).attr('id') + "</h3></div>");
+    		$( "#stopped_bus" ).html("<div class='btn btn-lg' style='background:#8C4799;color:white;margin:7px;'><h3> You stopped bus " + $(this).attr('id') + "</h3></div>");
 		});
 	});
  </script>
@@ -21,7 +21,8 @@
 
 
 <div style="text-align:center;background-color:#00B9E4;padding:10px;color:white;border-bottom: 10px solid #64BE14;border-radius:20px;">
-<h1><b>Stop2.0</b> <span class="label label-success">siirry <a href="https://beta.reittiopas.fi/" style="color:white;">reittioppaaseen</a></span></h1>
+<div class="btn btn-lg" style="background:#FF6319;color:white;margin-bottom:10px;"><h1><b>Stop2.0 {{stop_name}}</b></h1></div>  
+<span class="label label-success">siirry <a href="https://beta.reittiopas.fi/" style="color:white;">reittioppaaseen</a></span></h1>
 <div>
 Buses arriving here: 
 {% for item in setti %}
@@ -33,6 +34,7 @@ Buses arriving here:
 <div id="stopped_bus" style="text-align:center;"> </div>
 
 {% if content %}
+
   <div style="text-align:center;padding:20px;">
      {{ content| safe }} </br>
   </div>
