@@ -1,0 +1,25 @@
+Selaimessa toimiva konsoli GraphQL-kyselyjen testaamiseen: http://dev.hsl.fi/graphql/console/
+
+Pysäkiltä päivän aikana lähtevät bussit:
+id:n kohdalle pysäkin gtfsid
+date: yyyymmdd
+
+{stop(id:"HSL:1362141") {
+  stoptimesForServiceDate(date:"20160528"){
+    pattern {
+      id
+      name
+      route {
+        gtfsId
+        shortName
+        longName
+      }
+    }
+      stoptimes {
+        serviceDay
+      	scheduledArrival
+    	realtimeArrival
+      }
+    }
+  }
+}

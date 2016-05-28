@@ -1,0 +1,33 @@
+Suursuon sairaala
+Pirjontie
+Maunula
+Maunulanmäki
+Kuusikkotie
+Vesakkotie
+Koivikkotie
+Niittyläntie
+Autokuljetuskeskus 2
+Autokuljetuskeskus 1
+Posti 2
+Posti 1
+Ilmalan bussivarikko
+Ilmalan seisake
+Ilmalanrinne
+Ilmalantori
+Tv-keskus
+Radiokatu
+Iso Paja
+Kyllikinportti
+Pasilan asema
+Junailijankuja
+Asemapäällikönkatu
+Jämsänkatu
+Pasilan konepaja
+Telekatu
+Päijänteentie
+Junatie
+Tynnyrintekijänkatu
+Kulosaari
+Tupasaari
+Kipparlahti
+Herttoniemi(M)
