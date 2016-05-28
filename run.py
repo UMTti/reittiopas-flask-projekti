@@ -3,7 +3,6 @@ from flask import Flask, url_for, render_template
 import os
 import psycopg2
 
-
 app = Flask(__name__)
 
 class Model:
