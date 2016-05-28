@@ -8,19 +8,11 @@
  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
  <script>
-    window.onload = function() {
-	navigator.geolocation.getCurrentPosition(function(location) {
-		console.log(location.coords);
-  		console.log(location.coords.latitude);
-  		console.log(location.coords.longitude);
-  		console.log(location.coords.accuracy);
-	});
-
-	};
 
 	$( document ).ready(function() {
-    	$( ".stop_bus" ).click(function() {
-    		alert( "You're stopped a bus!");
+    	$( ".stop_bus" ).click(function(event) {
+
+    		$( "#stopped_bus" ).html("<div class='btn btn-lg' style='background:#8C4799;color:white;margin:7px;margin-top:15px;'><h3> You stopped bus " + $(this).attr('id') + "</h3></div>");
 		});
 	});
  </script>
@@ -29,16 +21,20 @@
 
 
 <div style="text-align:center;background-color:#00B9E4;padding:10px;color:white;border-bottom: 10px solid #64BE14;border-radius:20px;">
-<h1>Stop2.0 <span class="label label-success">siirry <a href="https://beta.reittiopas.fi/" style="color:white;">reittioppaaseen</a></span></h1>
+<div class="btn btn-lg" style="background:#FF6319;color:white;margin-bottom:10px;"><h1><b>Stop2.0 {{stop_name}}</b></h1></div>  
+<span class="label label-success">siirry <a href="https://beta.reittiopas.fi/" style="color:white;">reittioppaaseen</a></span></h1>
 <div>
-Buses ariving here: 
+Buses arriving here: 
 {% for item in setti %}
    {{ item }} &nbsp
 {% endfor %}
 </div>
 </div>
 
+<div id="stopped_bus" style="text-align:center;"> </div>
+
 {% if content %}
+
   <div style="text-align:center;padding:20px;">
      {{ content| safe }} </br>
   </div>
@@ -46,8 +42,6 @@ Buses ariving here:
   <h1>Et ole pysäkin lähellä tai bussissa.</h1>
 {% endif %}
 
-
-<div id="demo"> </div>
 
 
 <!--<form method="post" action="/search">
