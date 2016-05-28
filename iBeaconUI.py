@@ -27,9 +27,10 @@ def default_page():
     blescan.hci_le_set_scan_parameters(sock)
     blescan.hci_enable_le_scan(sock)
 
-    returnedList = blescan.parse_events(sock, 100)
+    returnedList = blescan.parse_events(sock, 10)
     app.logger.info(returnedList)
     print "----------"
+    setti = set()
     for beacon in returnedList:
         if '2f234454cf6d4a0fadf2f4911ba9ffa6' in beacon:
         	#2f234454cf6d4a0fadf2f4911ba9ffa6
@@ -37,10 +38,16 @@ def default_page():
             r = requests.get("http://stop2.herokuapp.com/stop/2f234454-cf6d-4a0f-adf2-f4911ba9ffa6")
             content = r.content
             content = json.loads(content)
+            palautus = "<h3>Press button to stop bus:</h3> "
+            for asd in content:
+            	setti.add(asd['line'])
+                palautus += " <div class='btn btn-primary stop_bus' style='margin:5px;'>" +  asd['line'] + "</div>  "
+            content = palautus
+            break
         else:
-            content = "Et ole pysakin tai bussin lahistolla"
+            content = "<h3>You're not near stop</h3>"
             app.logger.info("beacon EI loydetty")
-    return render_template('index_templatelocal.html', content=content)
+    return render_template('index_templatelocal.html', content=content, setti=setti)
 
 
 
