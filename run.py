@@ -6,13 +6,13 @@ import json
 
 app = Flask(__name__)
 
+
 class Model:
 
     def __init__(self, dbname, port):
         self.conn = psycopg2.connect("dbname=%s port=%d" % (dbname, port))
         self.cur = self.conn.cursor()
         psycopg2.extensions.register_type(psycopg2.extensions.UNICODE, self.cur)
-
 
     def sql(self, query, args=()):
         self.cur.execute(query, args)
@@ -21,11 +21,11 @@ class Model:
     def commit(self):
         self.conn.commit()
 
-    
 
 @app.route('/hello/')
 def hello(name=None):
     return render_template('hello.html')
+
 
 def search_buses_by_stop_id(stop_id):
     s = StopSchedule()
@@ -35,12 +35,13 @@ def search_buses_by_stop_id(stop_id):
 
 @app.route('/stop/<beacon_id>')
 def send_beacon_id(beacon_id):
-    beacon_ids = {'2f2f':'HSL:1362141'}
+    beacon_ids = {'2f2f': 'HSL:1362141'}
     buses = ""
     if beacon_id in beacon_ids:
         buses = search_buses_by_stop_id(beacon_ids[beacon_id])
 
     return buses
+
 
 @app.route('/sivut/')
 def default_page():
