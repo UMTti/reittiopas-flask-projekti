@@ -9,6 +9,8 @@ class StopSchedule:
         self.headers = {'Content-Type': 'application/graphql'}
 
         self.query = ("{stop(id: \"%s\") {"
+             "  name"
+             "  code"
              "  stoptimesForServiceDate(date: \"%s\"){"
              "    pattern {"
              "      id"
@@ -30,9 +32,9 @@ class StopSchedule:
 
     def schedule(self):
         r = requests.post(self.url, data=self.query, headers=self.headers)
-        data = json.loads(r.text)
+        data = json.loads(r.text)["data"]["stop"]
 
-        lines = data["data"]["stop"]["stoptimesForServiceDate"]
+        lines = data["stoptimesForServiceDate"]
 
         current_time = datetime.datetime.now()
 
@@ -46,4 +48,5 @@ class StopSchedule:
                     sched.append({'line': name, 'arrival': arrival.strftime("%s")})
 
         sorted_list = sorted(sched, key=lambda k: k['arrival'])
+        sorted_list.insert(0, {'stop_name': data["name"], 'stop_code': data["code"]})
         return sorted_list
