@@ -1,3 +1,4 @@
+gunicorn==19.6.0
 #apturl==0.5.2
 #beautifulsoup4==4.4.1
 #blinker==1.3
