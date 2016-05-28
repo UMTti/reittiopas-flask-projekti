@@ -41,8 +41,8 @@ def default_page():
             palautus = "<h3>Press button to stop bus:</h3> "
             for asd in content:
                 setti.add(asd['line'])
-                arrival = datetime.fromtimestamp(int(asd[arrival])).strftime('%H:%M')
-                palautus += " <div class='btn btn-primary stop_bus' style='margin:5px;'>" +  asd['line'] + " " + asd[arrival] \
+                arrival = datetime.fromtimestamp(int(asd['arrival'])).strftime('%H:%M')
+                palautus += " <div class='btn btn-primary stop_bus' style='margin:5px;'>" +  asd['line'] + " " + arrival \
                             + "</div>  "
             content = palautus
             break

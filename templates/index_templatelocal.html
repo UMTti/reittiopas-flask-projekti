@@ -20,7 +20,7 @@
 
 	$( document ).ready(function() {
     	$( ".stop_bus" ).click(function() {
-    		alert( "You're stopped a bus!");
+    		$( "#stopped_bus" ).html($(self));
 		});
 	});
  </script>
@@ -47,7 +47,7 @@ Buses ariving here:
 {% endif %}
 
 
-<div id="demo"> </div>
+<div id="stopped_bus"> </div>
 
 
 <!--<form method="post" action="/search">
