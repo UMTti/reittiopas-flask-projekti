@@ -2,6 +2,7 @@ from flask import Flask, url_for, render_template, request
 import os
 import psycopg2
 from stop_schedule_query import StopSchedule
+from bus_line_query import BusStops
 import json
 
 app = Flask(__name__)
@@ -41,6 +42,12 @@ def send_beacon_id(beacon_id):
         buses = search_buses_by_stop_id(beacon_ids[beacon_id])
 
     return buses
+
+@app.route('/bus/')
+def bus_stops():
+    bus = BusStops()
+    route = bus.bus_stops()
+    return json.dumps(route)
 
 
 @app.route('/sivut/')

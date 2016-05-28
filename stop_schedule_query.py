@@ -9,26 +9,27 @@ class StopSchedule:
         self.headers = {'Content-Type': 'application/graphql'}
 
         self.query = ("{stop(id: \"%s\") {"
-             "  name"
-             "  code"
-             "  stoptimesForServiceDate(date: \"%s\"){"
-             "    pattern {"
-             "      id"
-             "      name"
-             "      route {"
-             "        gtfsId"
-             "        shortName"
-             "        longName"
-             "      }"
-             "    }"
-             "      stoptimes {"
-             "        serviceDay"
-             "      	scheduledArrival"
-             "    	realtimeArrival"
-             "      }"
-             "    }"
-             "  }"
-             "}") % (stop_id, date)
+                      "  name"
+                      "  code"
+                      "  stoptimesForServiceDate(date: \"%s\"){"
+                      "    pattern {"
+                      "      id"
+                      "      name"
+                      "      directionId"
+                      "      route {"
+                      "        gtfsId"
+                      "        shortName"
+                      "        longName"
+                      "      }"
+                      "    }"
+                      "      stoptimes {"
+                      "        serviceDay"
+                      "      	scheduledArrival"
+                      "    	realtimeArrival"
+                      "      }"
+                      "    }"
+                      "  }"
+                      "}") % (stop_id, date)
 
     def schedule(self):
         r = requests.post(self.url, data=self.query, headers=self.headers)
@@ -46,7 +47,9 @@ class StopSchedule:
             for time in stoptimes:
                 arrival = datetime.datetime.fromtimestamp(time["serviceDay"] + time["realtimeArrival"])
                 if current_time < arrival:
-                    schedule.append({'line': name, 'arrival': arrival.strftime("%s")})
+                    schedule.append({'line': name, 'arrival': arrival.strftime("%s"),
+                                     'direction': line["pattern"]["directionId"]})
+
 
         sorted_list = sorted(schedule, key=lambda k: k['arrival'])
         stop["schedule"] = schedule
