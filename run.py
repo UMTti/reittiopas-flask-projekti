@@ -1,6 +1,8 @@
 from flask import Flask, url_for, render_template, request
 import os
 import psycopg2
+from stop_schedule_query import StopSchedule
+import json
 
 app = Flask(__name__)
 
@@ -26,7 +28,9 @@ def hello(name=None):
     return render_template('hello.html')
 
 def search_buses_by_stop_id(stop_id):
-    return stop_id
+    s = StopSchedule()
+    j = json.dumps(s.schedule())
+    return j
 
 
 @app.route('/stop/<beacon_id>')
