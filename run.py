@@ -1,17 +1,34 @@
+from flask import Flask, url_for, render_template, request
 import os
-from flask import Flask, url_for
-from flask import render_template
+import psycopg2
+
+
 app = Flask(__name__)
 
-@app.route('/send_beacon_id/<String:beacon_id>')
-def send_beacon_id(beacon_id):
-    # show the post with the given id, the id is an integer
-    return 'Post %d' % beacon_id
+class Model:
+
+    def __init__(self, dbname, port):
+        self.conn = psycopg2.connect("dbname=%s port=%d" % (dbname, port))
+        self.cur = self.conn.cursor()
+        psycopg2.extensions.register_type(psycopg2.extensions.UNICODE, self.cur)
 
 
 @app.route('/hello/')
 def hello(name=None):
     return render_template('hello.html')
+
+def search_buses_by_stop_id(stop_id):
+    return ""
+
+
+
+@app.route('/send_beacon_id/<beacon_id>', methods=['POST'])
+def send_beacon_id(beacon_id):
+    beacon_ids = {'2f2f':'HSL:1362141'}
+    if beacon_id in beacon_ids:
+        buses = search_stop_by_id(beacon_ids[beacon_id])
+
+    return name
 
 @app.route('/sivut/')
 def default_page():
