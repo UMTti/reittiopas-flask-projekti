@@ -23,3 +23,15 @@ date: yyyymmdd
     }
   }
 }
+
+
+Query all stops, returning their id, name and location:
+
+{
+  stops{
+    gtfsId
+    name
+    lat
+    lon
+  }
+}
