@@ -2,7 +2,6 @@ from flask import Flask, url_for, render_template, request
 import os
 import psycopg2
 
-
 app = Flask(__name__)
 
 class Model:
@@ -12,6 +11,15 @@ class Model:
         self.cur = self.conn.cursor()
         psycopg2.extensions.register_type(psycopg2.extensions.UNICODE, self.cur)
 
+
+    def sql(self, query, args=()):
+        self.cur.execute(query, args)
+        return self.cur.fetchall()
+
+    def commit(self):
+        self.conn.commit()
+
+    
 
 @app.route('/hello/')
 def hello(name=None):
