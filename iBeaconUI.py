@@ -18,7 +18,6 @@ def default_page():
     try:
         sock = bluez.hci_open_dev(dev_id)
         print "ble thread started"
-
     except:
         print "error accessing bluetooth device..."
         sys.exit(1)
@@ -27,8 +26,8 @@ def default_page():
     blescan.hci_enable_le_scan(sock)
 
     while True:
-	    returnedList = blescan.parse_events(sock, 10)
-	    print "----------"
+        returnedList = blescan.parse_events(sock, 10)
+        print "----------"
         for beacon in returnedList:
             if '2f234454cf6d4a0fadf2f4911ba9ffa6' in beacon:
                 r = requests.get("http:///stop2.herokuapp.com/stop/2f234454cf6d4a0fadf2f4911ba9ffa6")
