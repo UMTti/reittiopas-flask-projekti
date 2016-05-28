@@ -38,15 +38,17 @@ class StopSchedule:
 
         current_time = datetime.datetime.now()
 
-        sched = []
+        stop = {'stop_name': data["name"], 'stop_code': data["code"], 'schedule': []}
+        schedule = []
         for line in lines:
             name = (line["pattern"]["route"]["shortName"])
             stoptimes = line["stoptimes"]
             for time in stoptimes:
                 arrival = datetime.datetime.fromtimestamp(time["serviceDay"] + time["realtimeArrival"])
                 if current_time < arrival:
-                    sched.append({'line': name, 'arrival': arrival.strftime("%s")})
+                    schedule.append({'line': name, 'arrival': arrival.strftime("%s")})
 
-        sorted_list = sorted(sched, key=lambda k: k['arrival'])
-        sorted_list.insert(0, {'stop_name': data["name"], 'stop_code': data["code"]})
-        return sorted_list
+        sorted_list = sorted(schedule, key=lambda k: k['arrival'])
+        stop["schedule"] = schedule
+
+        return stop
