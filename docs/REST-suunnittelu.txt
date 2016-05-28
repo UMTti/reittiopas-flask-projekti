@@ -1,6 +1,10 @@
 REST-suunnittelu
 
+Bussin REST:
+GET-pyyntö /stops/buss/[id] -- Palauttaa pysäkit, joissa pitää pysähtyä (id)
+
+Käyttäjän REST:
 get-pyyntö /stops/[beacon_id] -- palauttaa listan seuraavista pysäkiltä lähtevistä busseista (numero, määränpää, etäisyys/aika, beaconin id?)
-POST-pyyntö /buss/[id]/[stop_beacon_id] -- kerrotaan bussille, että tällä pysäkillä pitää pysähtyä 
+POST-pyyntö /buss/[id]/[stop_id] -- kerrotaan bussille, että tällä pysäkillä pitää pysähtyä 
 
 GET-pyyntö /buss/stops/[buss_id] -- palauttaa listan bussilinjan pysäkeistä (nimi, numero, beacon-id). Ehkä vaan tulevat pysäkit? Miten?
