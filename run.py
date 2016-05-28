@@ -18,17 +18,17 @@ def hello(name=None):
     return render_template('hello.html')
 
 def search_buses_by_stop_id(stop_id):
-    return ""
+    return stop_id
 
 
-
-@app.route('/send_beacon_id/<beacon_id>', methods=['POST'])
+@app.route('/stop/<beacon_id>')
 def send_beacon_id(beacon_id):
     beacon_ids = {'2f2f':'HSL:1362141'}
+    buses = ""
     if beacon_id in beacon_ids:
-        buses = search_stop_by_id(beacon_ids[beacon_id])
+        buses = search_buses_by_stop_id(beacon_ids[beacon_id])
 
-    return name
+    return buses
 
 @app.route('/sivut/')
 def default_page():
