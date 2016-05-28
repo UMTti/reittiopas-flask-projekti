@@ -8,10 +8,8 @@
  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
  <script>
     window.onload = function() {
-    	alert("Juuhh")
 	navigator.geolocation.getCurrentPosition(function(location) {
-		alert("terce")
-		alert(location.coords);
+		console.log(location.coords);
   		console.log(location.coords.latitude);
   		console.log(location.coords.longitude);
   		console.log(location.coords.accuracy);
@@ -28,9 +26,13 @@
 </div>
 
 {% if content %}
-  <h1>Hello {{ content }}!</h1>
+  <div style="text-align:center;">
+   {% for c in content %}
+     {{ c }}
+   {% endfor %} 
+  </div>
 {% else %}
-  <h1>Hello World!</h1>
+  <h1>Et ole pysäkin lähellä tai bussissa.</h1>
 {% endif %}
 
 
