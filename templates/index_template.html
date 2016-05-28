@@ -5,25 +5,22 @@
  <meta name="author" content="Henna Kalliokoski">
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
  <link rel="stylesheet" type="text/css" href="/pages/stule.css">
+ <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
-<div class="box">
-%if 'loggedin' in session:
-	<p>kirjautuneena: {{session['loggedin']}}
-	<a id="kirj" href="/logout"> kirjaudu ulos </a>
-%else:
-<a id="kirj" href="/pages/kirjaudu.html"> kirjaudu </a>
-%end
 
+
+<div style="text-align:center;background-color:#00B9E4;padding:10px;color:white;border-bottom: 10px solid #64BE14;border-radius:20px;">
 <h1>Stop2.0</h1>
+</div>
 
-<form method="post" action="/search">
+
+<!--<form method="post" action="/search">
 	<p>
 	<label for="haku"> Haku </label>
 		<input type="text" name="haku"> 
 	<input type=submit value="Hae">
-</form>
-<p> <a href="/place"> missä oot </a>
+</form> -->
 
 
 </div>
