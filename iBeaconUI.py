@@ -39,7 +39,7 @@ def default_page():
             content = r.content
             content = json.loads(content)
             palautus = "<h3>Press button to stop bus:</h3> "
-            for asd in content:
+            for asd in content['schedule']:
                 setti.add(asd['line'])
                 arrival = datetime.fromtimestamp(int(asd['arrival'])).strftime('%H:%M')
                 palautus += " <div class='btn btn-lg stop_bus' style='margin:5px;color:white;background:#F092CD;' id='" + asd['line'] + "'>" +  asd['line'] + " " + arrival \
