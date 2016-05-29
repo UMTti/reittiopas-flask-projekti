@@ -12,7 +12,6 @@
  	var socket = io.connect('http://' + document.domain + ':' + '5000' + '/driver');
 	$( document ).ready(function() {
     	$( ".stop_bus" ).click(function(event) {
-
     		$( "#stopped_bus" ).html("<div class='btn btn-lg' style='background:#8C4799;color:white;margin:7px;margin-top:15px;'><h3> You stopped bus " + $(this).attr('id') + "</h3></div>");
 
     		var id = $(this).attr('id');
