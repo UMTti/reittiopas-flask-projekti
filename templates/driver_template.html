@@ -14,7 +14,7 @@ style="background:#FF6319;color:white;margin-bottom:10px;margin-top:10px;"><h1>{
 
     <div style="border-left: 2px solid black;">
     {% for item in stops['stops'] %}
-        <div class="stop" style="border-bottom:1px solid black;width:100px;padding-left:4px;" id="{{ item['code'] }}">{{ item['name'] }}</div>
+        <div class="stop" style="border-bottom:1px solid black;width:100px;padding-left:4px;font-size:150%" id="{{ item['code'] }}">{{ item['name'] }}</div>
     {% endfor %}
         </div>
 </div>
@@ -26,7 +26,8 @@ style="background:#FF6319;color:white;margin-bottom:10px;margin-top:10px;"><h1>{
         var socket = io.connect('http://' + document.domain + ':' + location.port + '/driver');
         socket.on('stop bus', function(msg) {
                 $('#'+msg.data).css('font-weight', 'Bold');
-                $('#'+msg.data).css('color', 'red');
+                $('#'+msg.data).css('color', '#FF6319');
+                $('#'+msg.data).css('font-size', '180%');
             });
     })
 </script>
