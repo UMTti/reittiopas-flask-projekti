@@ -36,7 +36,7 @@ class StopSchedule:
 
         lines = data["stoptimesForServiceDate"]
 
-        current_time = datetime.datetime.now()
+        current_timee = datetime.datetime.now()
 
         stop = {'stop_name': data["name"], 'stop_code': data["code"], 'schedule': []}
         schedule = []
@@ -45,7 +45,7 @@ class StopSchedule:
             stoptimes = line["stoptimes"]
             for time in stoptimes:
                 arrival = datetime.datetime.fromtimestamp(time["serviceDay"] + time["realtimeArrival"])
-                if current_time < arrival:
+                if current_timee < arrival:
                     schedule.append({'line': name, 'arrival': arrival.strftime("%s")})
 
         sorted_list = sorted(schedule, key=lambda k: k['arrival'])
