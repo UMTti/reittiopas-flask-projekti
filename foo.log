@@ -1,4 +1,3 @@
-      
 Exception on /sivut/ [GET]
 Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
@@ -11,9 +10,15 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "iBeaconUI.py", line 43, in default_page
-    set.add(asd['line'])
-TypeError: descriptor 'add' requires a 'set' object but received a 'unicode'
+  File "iBeaconUI.py", line 41, in default_page
+    content = json.loads(content)
+  File "/usr/lib/python2.7/json/__init__.py", line 339, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python2.7/json/decoder.py", line 364, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python2.7/json/decoder.py", line 382, in raw_decode
+    raise ValueError("No JSON object could be decoded")
+ValueError: No JSON object could be decoded
 Exception on /sivut/ [GET]
 Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
@@ -26,126 +31,12 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "iBeaconUI.py", line 43, in default_page
-    set.add(asd['line'])
-TypeError: descriptor 'add' requires a 'set' object but received a 'unicode'
-Exception on /sivut/ [GET]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "iBeaconUI.py", line 50, in default_page
-    return render_template('index_templatelocal.html', content=content, setti="Buses ariving here: " + setti)
-UnboundLocalError: local variable 'setti' referenced before assignment
-Exception on /sivut/ [GET]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "iBeaconUI.py", line 50, in default_page
-    return render_template('index_templatelocal.html', content=content, setti="Buses ariving here: " + setti)
-TypeError: cannot concatenate 'str' and 'set' objects
-Exception on /sivut/ [GET]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "iBeaconUI.py", line 44, in default_page
-    arrival = datetime.fromtimestamp(int(asd[arrival])).strftime('%H:%M')
-UnboundLocalError: local variable 'arrival' referenced before assignment
-Exception on /sivut/ [GET]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "iBeaconUI.py", line 46, in default_page
-    + "</div>  "
-KeyError: '21:27'
-Exception on /sivut/ [GET]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "iBeaconUI.py", line 43, in default_page
-    setti.add(asd['line'])
-TypeError: string indices must be integers
-Exception on /sivut/ [GET]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "iBeaconUI.py", line 43, in default_page
-    setti.add(asd['line'])
-TypeError: string indices must be integers
-Exception on /sivut/ [GET]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "iBeaconUI.py", line 43, in default_page
-    setti.add(asd['line'])
-TypeError: string indices must be integers
-Exception on /sivut/ [GET]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "iBeaconUI.py", line 53, in default_page
-    return render_template('index_templatelocal.html', content=content, setti=setti, stop_name=stop_name)
-UnboundLocalError: local variable 'stop_name' referenced before assignment
+  File "iBeaconUI.py", line 41, in default_page
+    content = json.loads(content)
+  File "/usr/lib/python2.7/json/__init__.py", line 339, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python2.7/json/decoder.py", line 364, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python2.7/json/decoder.py", line 382, in raw_decode
+    raise ValueError("No JSON object could be decoded")
+ValueError: No JSON object could be decoded
