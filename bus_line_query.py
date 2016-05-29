@@ -2,11 +2,11 @@ import requests
 import json
 
 class BusStops:
-    def __init__(self, bus_id='HSL:4718'):
+    def __init__(self, bus_id='HSL:4718', direction=1):
         self.url = "http://api.digitransit.fi/routing/v1/routers/hsl/index/graphql"
         self.headers = {'Content-Type': 'application/graphql'}
         self.query = ("{"
-                      "  pattern(id:\"%s:0:01\") {"
+                      "  pattern(id:\"%s:%s:01\") {"
                       "    name"
                       "    stops{"
                       "      name"
@@ -14,7 +14,7 @@ class BusStops:
                       "      gtfsId"
                       "    }"
                       "  }"
-                      "}") % bus_id
+                      "}") % (bus_id, direction)
 
     def bus_stops(self):
         r = requests.post(self.url, data=self.query, headers=self.headers)
