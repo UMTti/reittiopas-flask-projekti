@@ -4,7 +4,8 @@ import datetime
 
 
 class StopSchedule:
-    def __init__(self, stop_id="HSL:1362141", date="20160528"):
+    def __init__(self, stop_id="HSL:1362141"):
+        date = datetime.datetime.now().strftime("%Y%m%d")
         self.url = "http://api.digitransit.fi/routing/v1/routers/hsl/index/graphql"
         self.headers = {'Content-Type': 'application/graphql'}
 
@@ -48,10 +49,11 @@ class StopSchedule:
                 arrival = datetime.datetime.fromtimestamp(time["serviceDay"] + time["realtimeArrival"])
                 if current_time < arrival:
                     schedule.append({'line': name, 'arrival': arrival.strftime("%s"),
+                                     'routeId': line["pattern"]["route"]["gtfsId"],
                                      'direction': line["pattern"]["directionId"]})
 
-
         sorted_list = sorted(schedule, key=lambda k: k['arrival'])
-        stop["schedule"] = schedule
+        stop["schedule"] = sorted_list
+        print(sorted_list)
 
         return stop
