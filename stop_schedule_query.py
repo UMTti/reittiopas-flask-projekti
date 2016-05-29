@@ -52,6 +52,7 @@ class StopSchedule:
                                      'routeId': line["pattern"]["route"]["gtfsId"],
                                      'direction': line["pattern"]["directionId"]})
 
+
         sorted_list = sorted(schedule, key=lambda k: k['arrival'])
         stop["schedule"] = sorted_list
         print(sorted_list)
