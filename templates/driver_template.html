@@ -2,14 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Kuljettajan pääte</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
-<div>
-    <h1>{{ stops['name'] }}</h1>
+<div style="margin-left:20px;">
+
+
+    <div class="btn btn-lg"
+style="background:#FF6319;color:white;margin-bottom:10px;margin-top:10px;"><h1>{{ stops['name'] }}</h1></div>
+
+    <div style="border-left: 2px solid black;">
     {% for item in stops['stops'] %}
-        <p class="stop" id="{{ item['code'] }}">{{ item['code'] }} {{ item['name'] }}</p>
+        <div class="stop" style="border-bottom:1px solid black;width:100px;padding-left:4px;" id="{{ item['code'] }}">{{ item['name'] }}</div>
     {% endfor %}
+        </div>
 </div>
 
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
@@ -18,7 +25,8 @@
     $(document).ready(function(){
         var socket = io.connect('http://' + document.domain + ':' + location.port + '/driver');
         socket.on('stop bus', function(msg) {
-                $('#'+msg.data).css('font-weight', 'Bold')
+                $('#'+msg.data).css('font-weight', 'Bold');
+                $('#'+msg.data).css('color', 'red');
             });
     })
 </script>
