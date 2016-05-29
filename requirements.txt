@@ -12,9 +12,9 @@ psycopg2==2.6.1
 flask-socketio==2.3
 eventlet==0.19.0
 
+python-engineio==0.7.2
+python-socketio==0.6.1
 six==1.10.0
-python-engineio
-python-socketio
 
 #apturl==0.5.2
 #beautifulsoup4==4.4.1
