@@ -4,7 +4,7 @@ import psycopg2
 from stop_schedule_query import StopSchedule
 from bus_line_query import BusStops
 import json
-from flask.ext.socketio import SocketIO, emit
+from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
 
