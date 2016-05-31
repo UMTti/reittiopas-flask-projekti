@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Commuter</title>
+</head>
+<body>
+    <p class="bus" id="738">738 5 min</p>
+    <p class="bus" id="717">717 5 min</p>
+
+
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            var socket = io.connect('http://' + document.domain + ':' + location.port + '/driver');
+            $('.bus').click(function(event) {
+                var id = $(this).attr('id');
+                socket.emit('bus selected event', {data: '3034'});
+                return false;
+            });
+        })
+    </script>
+</body>
+</html>

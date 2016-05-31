@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stops</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+</head>
+<body>
+
+    <div style="text-align:center;background-color:#00B9E4;padding:10px;color:white;border-bottom: 10px solid #64BE14;border-radius:20px;">
+            <div class="btn btn-lg" style="background:#FF6319;color:white;margin-bottom:10px;"><h1><b>Stop2.0 {{stop_name}}</b></h1></div>
+            <div class="btn btn-lg" style="background:#FF6319;color:white;margin-bottom:10px;margin-top:10px;">
+                <h1>{{ stops['name'] }}</h1>
+            </div>
+            <span class="label label-success">siirry <a href="https://beta.reittiopas.fi/" style="color:white;">reittioppaaseen</a></span></h1><div>
+        </div>
+        </div>
+
+    <div>
+    {% for item in stops['stops'] %}
+        <div class='btn btn-lg stop_bus' style='margin:5px;color:white;background:#F092CD;text-align:center' id="{{ item['code'] }}">
+            {{ item['name'] }}
+        </div>
+        <br />
+    {% endfor %}
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script>
+    $( document ).ready(function() {
+        var socket = io.connect('http://' + document.domain + ':' + '5000' + '/driver');
+        $( ".stop_bus" ).click(function(event) {
+            var stop_code = $(this).attr('id');
+            console.log(stop_code)
+            socket.emit('bus selected event', {data: stop_code});
+            return false;
+        });
+    });
+    </script>
+</body>
+</html>

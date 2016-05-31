@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kuljettajan pääte</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+<body>
+<div style="margin-left:20px;">
+
+
+    <div class="btn btn-lg"
+style="background:#007AC9;color:white;margin-bottom:10px;margin-top:10px;"><h1>{{ stops['name'] }}</h1></div>
+
+    <div style="border-left: 2px solid black;">
+    {% for item in stops['stops'] %}
+        <div class="stop" style="border-bottom:1px solid black;width:100px;padding-left:4px;font-size:150%" id="{{ item['code'] }}">{{ item['name'] }}</div>
+    {% endfor %}
+        </div>
+</div>
+
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+        var socket = io.connect('http://' + document.domain + ':' + location.port + '/driver');
+        socket.on('stop bus', function(msg) {
+                $('#'+msg.data).css('font-weight', 'Bold');
+                $('#'+msg.data).css('color', '#FF6319');
+                $('#'+msg.data).css('font-size', '180%');
+            });
+    })
+</script>
+</body>
+</html>
